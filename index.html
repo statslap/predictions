@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StatSlap Predictions Log — Public &amp; Time-Stamped</title>
+  <meta name="description" content="Every Over/Under forecast from the StatSlap YouTube channel, logged before kickoff with a Git commit timestamp that cannot be backdated.">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: #11111a;
+      --accent: #FF5722;
+      --hud: #00F2FF;
+      --text: #e8e8ee;
+      --muted: #7a7a8a;
+      --hit: #2ecc71;
+      --miss: #e74c3c;
+      --pending: #f39c12;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+    }
+    header {
+      padding: 32px 24px 16px;
+      border-bottom: 1px solid #222;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 28px;
+      margin: 0 0 8px;
+      letter-spacing: -0.5px;
+    }
+    header .sub {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+    main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .stat {
+      background: var(--panel);
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+    .stat-label { font-size: 11px; text-transform: uppercase; color: var(--muted); letter-spacing: 1px; }
+    .stat-value { font-size: 28px; font-weight: 700; margin-top: 6px; }
+    .day-block {
+      background: var(--panel);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .day-header {
+      padding: 14px 18px;
+      background: #15151f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .day-date { font-weight: 600; font-size: 16px; }
+    .day-summary { color: var(--muted); font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 10px 18px; text-align: left; border-bottom: 1px solid #1a1a25; }
+    th { color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+    tr:last-child td { border-bottom: none; }
+    .match { font-weight: 500; }
+    .comp { color: var(--muted); font-size: 12px; }
+    .prob { font-variant-numeric: tabular-nums; color: var(--hud); }
+    .score { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .result {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .result.HIT { background: rgba(46,204,113,0.15); color: var(--hit); }
+    .result.MISS { background: rgba(231,76,60,0.15); color: var(--miss); }
+    .result.PENDING { background: rgba(243,156,18,0.15); color: var(--pending); }
+    .verify-note {
+      background: rgba(0,242,255,0.05);
+      border-left: 3px solid var(--hud);
+      padding: 14px 18px;
+      margin: 24px 0;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .verify-note code {
+      background: #000;
+      color: var(--hud);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 13px;
+    }
+    footer {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid #222;
+      text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) {
+      th:nth-child(3), td:nth-child(3) { display: none; } /* hide kickoff */
+      .stat-value { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>StatSlap Predictions Log</h1>
+    <p class="sub">Every Over/Under forecast — logged publicly <strong>before kickoff</strong>. Git timestamps cannot be backdated.</p>
+  </header>
+
+  <main>
+    <div class="stats" id="stats">
+      <div class="stat"><div class="stat-label">Total Picks</div><div class="stat-value" id="s-total">–</div></div>
+      <div class="stat"><div class="stat-label">Hits</div><div class="stat-value" style="color:var(--hit)" id="s-hits">–</div></div>
+      <div class="stat"><div class="stat-label">Misses</div><div class="stat-value" style="color:var(--miss)" id="s-misses">–</div></div>
+      <div class="stat"><div class="stat-label">Hit-Rate</div><div class="stat-value" id="s-rate">–</div></div>
+      <div class="stat"><div class="stat-label">Pending</div><div class="stat-value" style="color:var(--pending)" id="s-pending">–</div></div>
+    </div>
+
+    <div class="verify-note">
+      <strong>How to verify:</strong> every JSON file under <code>predictions/</code> is committed to Git before kickoff.
+      Open the Git history of any file (<a href="https://github.com/statslap/predictions/commits/main" style="color:var(--hud)">commit log</a>) to see the exact moment each prediction was published. The <code>captured_at</code> field is the model's own timestamp; the Git commit timestamp is the independent verification.
+    </div>
+
+    <div id="days"></div>
+  </main>
+
+  <footer>
+    Channel: <a href="https://www.youtube.com/channel/UCkK1XF33aD24CcRybTXWQEA">@StatSlap on YouTube</a> · Repo: <a href="https://github.com/statslap/predictions">github.com/statslap/predictions</a> · Not betting advice — transparency &amp; entertainment only
+  </footer>
+
+  <script>
+    // List of days to show — auto-updated by the publisher script (see scripts/build_index.py)
+    const DAYS = window.STATSLAP_DAYS || [];
+
+    async function loadDay(date) {
+      try {
+        const r = await fetch(`predictions/${date}.json`);
+        if (!r.ok) return null;
+        return await r.json();
+      } catch (e) { return null; }
+    }
+
+    function renderRow(p) {
+      const cls = p.result || 'PENDING';
+      const score = p.final_score ? `<span class="score">${p.final_score}</span>` : '<span style="color:var(--muted)">—</span>';
+      return `<tr>
+        <td>
+          <div class="match">${p.home} — ${p.away}</div>
+          <div class="comp">${p.competition}${p.kickoff ? ' · ' + p.kickoff : ''}</div>
+        </td>
+        <td>${p.prediction}</td>
+        <td class="prob">${(p.p_model*100).toFixed(0)}%</td>
+        <td>${score}</td>
+        <td><span class="result ${cls}">${cls}</span></td>
+      </tr>`;
+    }
+
+    function renderDay(day) {
+      const s = day.summary;
+      const subtitle = `${s.hits} HIT · ${s.misses} MISS${s.pending ? ' · ' + s.pending + ' pending' : ''}`;
+      const rows = day.predictions.map(renderRow).join('');
+      return `<section class="day-block">
+        <header class="day-header">
+          <div class="day-date">${day.date}</div>
+          <div class="day-summary">${subtitle}</div>
+        </header>
+        <table>
+          <thead><tr><th>Match</th><th>Pick</th><th>Model %</th><th>Final</th><th>Result</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </section>`;
+    }
+
+    (async () => {
+      const days = (await Promise.all(DAYS.map(loadDay))).filter(Boolean);
+      days.sort((a,b) => b.date.localeCompare(a.date));
+      let total=0, hits=0, misses=0, pending=0;
+      for (const d of days) {
+        total += d.summary.total;
+        hits += d.summary.hits;
+        misses += d.summary.misses;
+        pending += d.summary.pending;
+      }
+      const settled = hits + misses;
+      document.getElementById('s-total').textContent = total;
+      document.getElementById('s-hits').textContent = hits;
+      document.getElementById('s-misses').textContent = misses;
+      document.getElementById('s-pending').textContent = pending;
+      document.getElementById('s-rate').textContent = settled ? `${(100*hits/settled).toFixed(1)}%` : '–';
+      document.getElementById('days').innerHTML = days.map(renderDay).join('');
+    })();
+  </script>
+  <script src="days.js"></script>
+</body>
+</html>

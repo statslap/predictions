@@ -1,0 +1,61 @@
+{
+  "date": "2026-05-03",
+  "generated_at": "2026-05-03T08:12:36.945967+00:00",
+  "model_version": "independent_poisson_v11",
+  "predictions": [
+    {
+      "match_id": 544544,
+      "home": "RCD Espanyol de Barcelona",
+      "away": "Real Madrid CF",
+      "competition": "La Liga",
+      "kickoff_utc": "2026-05-03T19:00:00Z",
+      "kickoff": "21:00 CEST",
+      "prediction": "OVER 2.5",
+      "p_model": 0.6379,
+      "lambda_total": 3.287,
+      "final_score": null,
+      "final_total": null,
+      "result": "PENDING",
+      "status": "TIMED",
+      "captured_at": "2026-05-02T08:10:19+00:00"
+    },
+    {
+      "match_id": 78229,
+      "home": "Karlsruher SC",
+      "away": "SV Darmstadt 98",
+      "competition": "2. Bundesliga",
+      "kickoff_utc": "2026-05-03T11:30:00Z",
+      "kickoff": "13:30 CEST",
+      "prediction": "OVER 2.5",
+      "p_model": 0.7832,
+      "lambda_total": 4.151,
+      "final_score": null,
+      "final_total": null,
+      "result": "PENDING",
+      "status": "NOT_FINISHED",
+      "captured_at": "2026-05-02T10:57:42+00:00"
+    },
+    {
+      "match_id": 78228,
+      "home": "1. FC Magdeburg",
+      "away": "Hertha BSC",
+      "competition": "2. Bundesliga",
+      "kickoff_utc": "2026-05-03T11:30:00Z",
+      "kickoff": "13:30 CEST",
+      "prediction": "OVER 2.5",
+      "p_model": 0.7359,
+      "lambda_total": 3.83,
+      "final_score": null,
+      "final_total": null,
+      "result": "PENDING",
+      "status": "NOT_FINISHED",
+      "captured_at": "2026-05-02T10:57:42+00:00"
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "hits": 0,
+    "misses": 0,
+    "pending": 3
+  }
+}
