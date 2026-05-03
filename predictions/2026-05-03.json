@@ -1,6 +1,6 @@
 {
   "date": "2026-05-03",
-  "generated_at": "2026-05-03T11:12:47.432809+00:00",
+  "generated_at": "2026-05-03T19:03:04.097562+00:00",
   "model_version": "independent_poisson_v11",
   "predictions": [
     {
@@ -29,10 +29,10 @@
       "prediction": "OVER 2.5",
       "p_model": 0.7832,
       "lambda_total": 4.151,
-      "final_score": null,
-      "final_total": null,
-      "result": "PENDING",
-      "status": "NOT_FINISHED",
+      "final_score": "2-1",
+      "final_total": 3,
+      "result": "HIT",
+      "status": "FINISHED",
       "captured_at": "2026-05-02T10:57:42+00:00"
     },
     {
@@ -45,17 +45,17 @@
       "prediction": "OVER 2.5",
       "p_model": 0.7359,
       "lambda_total": 3.83,
-      "final_score": null,
-      "final_total": null,
-      "result": "PENDING",
-      "status": "NOT_FINISHED",
+      "final_score": "1-0",
+      "final_total": 1,
+      "result": "MISS",
+      "status": "FINISHED",
       "captured_at": "2026-05-02T10:57:42+00:00"
     }
   ],
   "summary": {
     "total": 3,
-    "hits": 0,
-    "misses": 0,
-    "pending": 3
+    "hits": 1,
+    "misses": 1,
+    "pending": 1
   }
 }
