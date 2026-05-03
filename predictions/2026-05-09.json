@@ -1,6 +1,6 @@
 {
   "date": "2026-05-09",
-  "generated_at": "2026-05-03T09:16:46.540070+00:00",
+  "generated_at": "2026-05-03T09:52:32.435997+00:00",
   "model_version": "independent_poisson_v11",
   "predictions": [
     {
@@ -18,12 +18,28 @@
       "result": "PENDING",
       "status": "TIMED",
       "captured_at": "2026-05-02T11:27:19+00:00"
+    },
+    {
+      "match_id": 78236,
+      "home": "VfL Bochum",
+      "away": "Hannover 96",
+      "competition": "2. Bundesliga",
+      "kickoff_utc": "2026-05-09T11:00:00Z",
+      "kickoff": "13:00 CEST",
+      "prediction": "OVER 2.5",
+      "p_model": 0.6369,
+      "lambda_total": 3.282,
+      "final_score": null,
+      "final_total": null,
+      "result": "PENDING",
+      "status": "NOT_FINISHED",
+      "captured_at": "2026-05-03T09:41:23+00:00"
     }
   ],
   "summary": {
-    "total": 1,
+    "total": 2,
     "hits": 0,
     "misses": 0,
-    "pending": 1
+    "pending": 2
   }
 }

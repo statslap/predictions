@@ -1,0 +1,45 @@
+{
+  "date": "2026-05-08",
+  "generated_at": "2026-05-03T09:52:32.435622+00:00",
+  "model_version": "independent_poisson_v11",
+  "predictions": [
+    {
+      "match_id": 78237,
+      "home": "SC Paderborn 07",
+      "away": "Karlsruher SC",
+      "competition": "2. Bundesliga",
+      "kickoff_utc": "2026-05-08T16:30:00Z",
+      "kickoff": "18:30 CEST",
+      "prediction": "OVER 2.5",
+      "p_model": 0.7519,
+      "lambda_total": 3.933,
+      "final_score": null,
+      "final_total": null,
+      "result": "PENDING",
+      "status": "NOT_FINISHED",
+      "captured_at": "2026-05-03T09:41:23+00:00"
+    },
+    {
+      "match_id": 78239,
+      "home": "1. FC Kaiserslautern",
+      "away": "DSC Arminia Bielefeld",
+      "competition": "2. Bundesliga",
+      "kickoff_utc": "2026-05-08T16:30:00Z",
+      "kickoff": "18:30 CEST",
+      "prediction": "OVER 2.5",
+      "p_model": 0.6486,
+      "lambda_total": 3.341,
+      "final_score": null,
+      "final_total": null,
+      "result": "PENDING",
+      "status": "NOT_FINISHED",
+      "captured_at": "2026-05-03T09:41:23+00:00"
+    }
+  ],
+  "summary": {
+    "total": 2,
+    "hits": 0,
+    "misses": 0,
+    "pending": 2
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-05-10",
+  "generated_at": "2026-05-03T09:52:32.436221+00:00",
+  "model_version": "independent_poisson_v11",
+  "predictions": [
+    {
+      "match_id": 544555,
+      "home": "RCD Mallorca",
+      "away": "Villarreal CF",
+      "competition": "La Liga",
+      "kickoff_utc": "2026-05-10T12:00:00Z",
+      "kickoff": "14:00 CEST",
+      "prediction": "OVER 2.5",
+      "p_model": 0.6618,
+      "lambda_total": 3.408,
+      "final_score": null,
+      "final_total": null,
+      "result": "PENDING",
+      "status": "TIMED",
+      "captured_at": "2026-05-03T09:41:23+00:00"
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "hits": 0,
+    "misses": 0,
+    "pending": 1
+  }
+}
