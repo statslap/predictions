@@ -1,6 +1,6 @@
 {
   "date": "2026-05-03",
-  "generated_at": "2026-05-03T19:42:01.253749+00:00",
+  "generated_at": "2026-05-04T10:25:03.209817+00:00",
   "model_version": "independent_poisson_v11",
   "predictions": [
     {
@@ -13,10 +13,10 @@
       "prediction": "OVER 2.5",
       "p_model": 0.6379,
       "lambda_total": 3.287,
-      "final_score": "0-0",
-      "final_total": 0,
+      "final_score": "0-2",
+      "final_total": 2,
       "result": "MISS",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "captured_at": "2026-05-02T08:10:19+00:00"
     },
     {
